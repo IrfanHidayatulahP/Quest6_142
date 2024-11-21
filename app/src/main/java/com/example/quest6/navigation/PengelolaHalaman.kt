@@ -1,12 +1,13 @@
 package com.example.quest6.navigation
 
 import androidx.compose.foundation.layout.padding
-import androidx.navigation.compose.composable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.quest6.ui.view.screen.MahasiswaFormView
 import com.example.quest6.ui.view.screen.RencanaStudiView
@@ -29,7 +30,9 @@ fun MahasiswaApp(
     krsViewModel: RencanaStudiViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
-    val mahasiswaUiState = mahasiswaViewModel.mahasiswaUiState.collectAsState().valueNavHost(
+    val mahasiswaUiState = mahasiswaViewModel.mahasiswaUiState.collectAsState().value
+
+    NavHost(
         navController = navController,
         startDestination = Halaman.Splash.name,
         modifier = Modifier.padding()
