@@ -40,6 +40,7 @@ import com.example.quest6.R
 import com.example.quest6.data.MataKuliah
 import com.example.quest6.data.RuangKelas
 import com.example.quest6.ui.model.Mahasiswa
+import com.example.quest6.widget.DynamicSelectedTextField
 
 @Composable
 fun RencanaStudiView (
