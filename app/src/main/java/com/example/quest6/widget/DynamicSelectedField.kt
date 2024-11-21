@@ -1,6 +1,7 @@
 package com.example.quest6.widget
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
@@ -27,7 +28,7 @@ fun DynamicSelectedTextField(
 
     ExposedDropdownMenuBox(
         expanded = expanded,
-        onExpandedChange = { expanded = !expanded},
+        onExpandedChange = { expanded = !expanded },
         modifier = Modifier
     ) {
         OutlinedTextField(
@@ -43,5 +44,16 @@ fun DynamicSelectedTextField(
                 .menuAnchor()
                 .fillMaxWidth()
         )
-
+        ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false}) {
+            options.forEach { option: String ->
+                DropdownMenuItem(
+                    text = { Text(text = option) },
+                    onClick = {
+                        expanded = false
+                        onValueChangedEvent(option)
+                    }
+                )
+            }
+        }
     }
+}
